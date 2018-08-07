@@ -3,5 +3,10 @@
     <string name="action_settings">Settings</string>
     <string name="no_network_error">No network available! Try again later!</string>
     <string name="exiting_app_label">Exiting app</string>
+    <string name="no_recipe_item">Currently there are no recepies. Check again later.</string>
+    <string name="ingredients_label">Ingredients</string>
+    <string name="serving_label">Serving</string>
+    <string name="title_item_list">Items</string>
+    <string name="title_item_detail">Item Detail</string>
 
 </resources>

@@ -15,16 +15,33 @@
         <activity
             android:name=".view.home.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".view.splash.SplashScreenActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".view.recipe_detial.ItemListActivity"
+            android:label="@string/title_item_list"
+            android:parentActivityName=".view.home.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sharma.deepak.bakerzz.view.home.MainActivity" />
+        </activity>
+        <activity
+            android:name=".view.recipe_detial.ItemDetailActivity"
+            android:label="@string/title_item_detail"
+            android:parentActivityName=".view.recipe_detial.ItemListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sharma.deepak.bakerzz.view.recipe_detial.ItemListActivity" />
         </activity>
     </application>
 

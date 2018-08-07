@@ -17,6 +17,8 @@ public class RecipeListResponse implements Parcelable {
         servings = in.readInt();
         name = in.readString();
         image = in.readString();
+        ingredients = in.createTypedArrayList(Ingredient.CREATOR);
+        steps = in.createTypedArrayList(RecipeStep.CREATOR);
     }
 
     public static final Creator<RecipeListResponse> CREATOR = new Creator<RecipeListResponse>() {
@@ -30,6 +32,22 @@ public class RecipeListResponse implements Parcelable {
             return new RecipeListResponse[size];
         }
     };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(id);
+        parcel.writeInt(servings);
+        parcel.writeString(name);
+        parcel.writeString(image);
+        parcel.writeTypedList(ingredients);
+        parcel.writeTypedList(steps);
+    }
+
 
     public int getId() {
         return id;
@@ -55,17 +73,8 @@ public class RecipeListResponse implements Parcelable {
         return steps;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeInt(id);
-        parcel.writeInt(servings);
-        parcel.writeString(name);
-        parcel.writeString(image);
+    public static Creator<RecipeListResponse> getCREATOR() {
+        return CREATOR;
     }
 }
 

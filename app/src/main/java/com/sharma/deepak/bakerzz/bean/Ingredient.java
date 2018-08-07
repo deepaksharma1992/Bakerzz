@@ -7,8 +7,9 @@ public class Ingredient implements Parcelable {
     private double quantity;
     private String measure, ingredient;
 
+
     protected Ingredient(Parcel in) {
-        quantity = in.readInt();
+        quantity = in.readDouble();
         measure = in.readString();
         ingredient = in.readString();
     }
@@ -25,6 +26,18 @@ public class Ingredient implements Parcelable {
         }
     };
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeDouble(quantity);
+        parcel.writeString(measure);
+        parcel.writeString(ingredient);
+    }
+
     public double getQuantity() {
         return quantity;
     }
@@ -37,16 +50,8 @@ public class Ingredient implements Parcelable {
         return ingredient;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeDouble(quantity);
-        parcel.writeString(measure);
-        parcel.writeString(ingredient);
+    public static Creator<Ingredient> getCREATOR() {
+        return CREATOR;
     }
 }
 

@@ -3,13 +3,13 @@ package com.sharma.deepak.bakerzz.view.splash;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.support.v7.app.AppCompatActivity;
 
 import com.sharma.deepak.bakerzz.R;
 import com.sharma.deepak.bakerzz.bean.RecipeListResponse;
 import com.sharma.deepak.bakerzz.presenter.splash.SplashPresenter;
 import com.sharma.deepak.bakerzz.presenter.splash.SplashPresenterInteractor;
 import com.sharma.deepak.bakerzz.util.MessageUtil;
-import com.sharma.deepak.bakerzz.view.BaseActivity;
 import com.sharma.deepak.bakerzz.view.home.MainActivity;
 
 import java.util.ArrayList;
@@ -18,26 +18,15 @@ import java.util.List;
 /**
  * created by deepak on 29 july 2018
  */
-public class SplashScreenActivity extends BaseActivity implements SplashScreenActivityInteractor {
+public class SplashScreenActivity extends AppCompatActivity implements SplashScreenActivityInteractor {
 
     public static final String SPLASH_LIST_EXTRA = "SPLASH_LIST_EXTRA";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(getResourceLayout());
+        setContentView(R.layout.activity_splash_screen);
         setUpActivityComponents();
-    }
-
-    /**
-     * @return the integer resource layout file
-     * @author deepaks
-     * @date 29 july 2018
-     * @description method to return resource layout file
-     */
-    @Override
-    protected int getResourceLayout() {
-        return R.layout.activity_splash_screen;
     }
 
     /**
@@ -45,8 +34,7 @@ public class SplashScreenActivity extends BaseActivity implements SplashScreenAc
      * @date 29 july 2018
      * @description method to set up the activity components
      */
-    @Override
-    protected void setUpActivityComponents() {
+    private void setUpActivityComponents() {
         callRecipeWebService();
     }
 
@@ -73,7 +61,7 @@ public class SplashScreenActivity extends BaseActivity implements SplashScreenAc
         recipeIntent.putParcelableArrayListExtra(SPLASH_LIST_EXTRA
                 , (ArrayList<? extends Parcelable>) recipeList);
         startActivity(recipeIntent);
-        moveHead(this);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
         finish();
     }
 

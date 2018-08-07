@@ -7,6 +7,7 @@ public class RecipeStep implements Parcelable {
     private int id;
     private String shortDescription, description, videoURL, thumbnailURL;
 
+
     protected RecipeStep(Parcel in) {
         id = in.readInt();
         shortDescription = in.readString();
@@ -26,6 +27,20 @@ public class RecipeStep implements Parcelable {
             return new RecipeStep[size];
         }
     };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(id);
+        parcel.writeString(shortDescription);
+        parcel.writeString(description);
+        parcel.writeString(videoURL);
+        parcel.writeString(thumbnailURL);
+    }
 
     public int getId() {
         return id;
@@ -47,18 +62,8 @@ public class RecipeStep implements Parcelable {
         return thumbnailURL;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeInt(id);
-        parcel.writeString(shortDescription);
-        parcel.writeString(description);
-        parcel.writeString(videoURL);
-        parcel.writeString(thumbnailURL);
+    public static Creator<RecipeStep> getCREATOR() {
+        return CREATOR;
     }
 }
 
