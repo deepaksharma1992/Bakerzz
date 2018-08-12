@@ -10,7 +10,7 @@
     android:divider="?android:attr/dividerHorizontal"
     android:orientation="horizontal"
     android:showDividers="middle"
-    tools:context=".view.recipe_detial.ItemListActivity">
+    tools:context=".view.recipe_detail.RecipeStepsActivity">
 
     <!--
     This layout is a two-pane layout for the Items
@@ -20,14 +20,14 @@
 
     <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/item_list"
+        android:id="@+id/rv_recipe_step"
         android:name="com.sharma.deepak.bakerzz.view.recipe_detial.ItemListFragment"
         android:layout_width="@dimen/item_width"
         android:layout_height="match_parent"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         app:layoutManager="LinearLayoutManager"
-        tools:context="com.sharma.deepak.bakerzz.view.recipe_detial.ItemListActivity"
+        tools:context="com.sharma.deepak.bakerzz.view.recipe_detail.RecipeStepsActivity"
         tools:listitem="@layout/item_list_content" />
 
     <FrameLayout

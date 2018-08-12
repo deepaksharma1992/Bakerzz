@@ -8,5 +8,9 @@
     <string name="serving_label">Serving</string>
     <string name="title_item_list">Items</string>
     <string name="title_item_detail">Item Detail</string>
+    <string name="title_activity_ingredients">IngredientsActivity</string>
+    <string name="make_this_delicious_recipe">Let\'s make this delicious recipe</string>
+    <string name="steps_label">Steps</string>
+    <string name="video">Video</string>
 
 </resources>

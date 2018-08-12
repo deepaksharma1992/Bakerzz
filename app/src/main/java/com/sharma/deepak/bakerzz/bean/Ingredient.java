@@ -3,6 +3,8 @@ package com.sharma.deepak.bakerzz.bean;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.sharma.deepak.bakerzz.util.GlobalConstants;
+
 public class Ingredient implements Parcelable {
     private double quantity;
     private String measure, ingredient;
@@ -52,6 +54,11 @@ public class Ingredient implements Parcelable {
 
     public static Creator<Ingredient> getCREATOR() {
         return CREATOR;
+    }
+
+    @Override
+    public String toString() {
+        return quantity + GlobalConstants.SPACE_1 + measure + GlobalConstants.SPACE_1 + ingredient;
     }
 }
 

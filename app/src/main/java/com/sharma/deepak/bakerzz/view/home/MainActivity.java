@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.sharma.deepak.bakerzz.R;
 import com.sharma.deepak.bakerzz.bean.RecipeListResponse;
 import com.sharma.deepak.bakerzz.util.OnRowButtonClickListener;
-import com.sharma.deepak.bakerzz.view.recipe_detial.ItemListActivity;
+import com.sharma.deepak.bakerzz.view.ingredients.IngredientsActivity;
 import com.sharma.deepak.bakerzz.view.splash.SplashScreenActivity;
 
 import java.util.List;
@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements OnRowButtonClickL
     private List<RecipeListResponse> mRecipeList;
     private RecyclerView mRecipeRecyclerView;
     private TextView mEmptyListText;
-    private static final String RECIPE_CONTENT_EXTRA = "RECIPE-CONTENT-EXTRA";
+    public static final String RECIPE_CONTENT_EXTRA = "RECIPE-CONTENT-EXTRA";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements OnRowButtonClickL
      */
     @Override
     public void onRowButtonClicked(int position) {
-        Intent recipeIntent = new Intent(this, ItemListActivity.class);
+        Intent recipeIntent = new Intent(this, IngredientsActivity.class);
         recipeIntent.putExtra(RECIPE_CONTENT_EXTRA, mRecipeList.get(position));
         startActivity(recipeIntent);
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);

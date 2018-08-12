@@ -22,7 +22,7 @@ import java.util.List;
 public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.MyViewHolder> {
 
     private final List<RecipeListResponse> mRecipeList;
-    private final Context mContext;
+    private final Context context;
     private final OnRowButtonClickListener mListButtonClickListener;
 
 
@@ -51,7 +51,7 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.My
     public RecipeListAdapter(Context context, OnRowButtonClickListener mListButtonClickListener
             , List<RecipeListResponse> mRecipeList) {
         this.mRecipeList = mRecipeList;
-        this.mContext = context;
+        this.context = context;
         this.mListButtonClickListener = mListButtonClickListener;
     }
 
@@ -71,44 +71,19 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.My
         if (recipeData.getIngredients() != null)
             holder.totalIngredients.setText(recipeData.getIngredients().size()
                     + GlobalConstants.SPACE_1
-                    + mContext.getString(R.string.ingredients_label)
+                    + context.getString(R.string.ingredients_label)
             );
-        holder.totalServing.setText(mContext.getString(R.string.serving_label)
+        holder.totalServing.setText(context.getString(R.string.serving_label)
                 + GlobalConstants.SPACE_1
                 + recipeData.getServings()
         );
 
         holder.recipeName.setText(recipeData.getName());
 
-
         String url = recipeData.getImage();
-        if (!TextUtils.isEmpty(url)) {
-            ImageUtil.loadImage(mContext, url, holder.recipeImage);
-        } else {
-            if (recipeData.getName().equalsIgnoreCase(GlobalConstants.NUTELLA_PIE)) {
-                ImageUtil.loadImage(mContext
-                        , ContextCompat.getDrawable(mContext, R.drawable.nutella_pie)
-                        , holder.recipeImage);
-            } else if (recipeData.getName().equalsIgnoreCase(GlobalConstants.BROWNIES)) {
-                ImageUtil.loadImage(mContext
-                        , ContextCompat.getDrawable(mContext, R.drawable.brownies)
-                        , holder.recipeImage);
-            } else if (recipeData.getName().equalsIgnoreCase(GlobalConstants.YELLOW_CAKE)) {
-                ImageUtil.loadImage(mContext
-                        , ContextCompat.getDrawable(mContext, R.drawable.yellow_cake)
-                        , holder.recipeImage);
-            } else if (recipeData.getName().equalsIgnoreCase(GlobalConstants.CHEESE_CAKE)) {
-                ImageUtil.loadImage(mContext
-                        , ContextCompat.getDrawable(mContext, R.drawable.cheese_cake)
-                        , holder.recipeImage);
-            } else {
-                ImageUtil.loadImage(mContext
-                        , ContextCompat.getDrawable(mContext, R.drawable.placeholder)
-                        , holder.recipeImage);
-            }
-        }
+        String recipeName = recipeData.getName();
 
-        holder.recipeImage.setBackgroundResource(R.drawable.cheese_cake);
+        ImageUtil.setUpImageResource(context, url, recipeName, holder.recipeImage);
     }
 
 

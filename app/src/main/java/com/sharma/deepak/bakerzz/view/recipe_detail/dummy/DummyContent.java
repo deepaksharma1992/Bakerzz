@@ -1,4 +1,4 @@
-package com.sharma.deepak.bakerzz.view.recipe_detial.dummy;
+package com.sharma.deepak.bakerzz.view.recipe_detail.dummy;
 
 import java.util.ArrayList;
 import java.util.HashMap;
