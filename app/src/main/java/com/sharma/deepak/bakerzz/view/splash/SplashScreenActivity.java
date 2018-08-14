@@ -21,7 +21,6 @@ import java.util.List;
 public class SplashScreenActivity extends AppCompatActivity implements SplashScreenActivityInteractor {
 
     public static final String SPLASH_LIST_EXTRA = "SPLASH_LIST_EXTRA";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

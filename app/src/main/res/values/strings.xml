@@ -12,5 +12,10 @@
     <string name="make_this_delicious_recipe">Let\'s make this delicious recipe</string>
     <string name="steps_label">Steps</string>
     <string name="video">Video</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="no_recipe_selected">Select a recipe from Ingredients Screen</string>
+    <string name="title_activity_scrolling">ScrollingActivity</string>
+    <string name="recipe_widget_updated">Recipe widget added</string>
 
 </resources>
