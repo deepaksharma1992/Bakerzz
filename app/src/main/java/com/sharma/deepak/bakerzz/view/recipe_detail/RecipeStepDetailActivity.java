@@ -58,8 +58,10 @@ public class RecipeStepDetailActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
-        fragment.releasePlayer();
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (fragment != null)
+            fragment.releasePlayer();
+        finish();
     }
 }

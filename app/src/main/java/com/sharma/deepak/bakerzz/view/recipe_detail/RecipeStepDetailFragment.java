@@ -152,9 +152,8 @@ public class RecipeStepDetailFragment extends Fragment {
      */
     public void releasePlayer() {
         if (player != null) {
-            player.setPlayWhenReady(false);
-            player.stop();
-            player.seekTo(0);
+            updateStartPosition();
+            shouldAutoPlay = player.getPlayWhenReady();
             player.release();
             player = null;
             trackSelector = null;
@@ -215,5 +214,15 @@ public class RecipeStepDetailFragment extends Fragment {
         playbackPosition = player.getCurrentPosition();
         currentWindow = player.getCurrentWindowIndex();
         playWhenReady = player.getPlayWhenReady();
+    }
+
+    /**
+     * @author deepaks
+     * @date 15 august 2018
+     * @descripton method to stop the player
+     */
+    public void stopPlayer() {
+        if (player != null)
+            player.stop();
     }
 }
