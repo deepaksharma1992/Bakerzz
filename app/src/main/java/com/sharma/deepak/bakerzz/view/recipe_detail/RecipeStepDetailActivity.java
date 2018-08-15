@@ -17,6 +17,7 @@ import com.sharma.deepak.bakerzz.R;
 public class RecipeStepDetailActivity extends AppCompatActivity {
 
     private static final String TITLE = "title";
+    private RecipeStepDetailFragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,7 @@ public class RecipeStepDetailActivity extends AppCompatActivity {
             Bundle arguments = new Bundle();
             arguments.putParcelable(RecipeStepDetailFragment.ARG_ITEM_ID,
                     getIntent().getParcelableExtra(RecipeStepDetailFragment.ARG_ITEM_ID));
-            RecipeStepDetailFragment fragment = new RecipeStepDetailFragment();
+            fragment = new RecipeStepDetailFragment();
             fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.item_detail_container, fragment)
@@ -56,4 +57,9 @@ public class RecipeStepDetailActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        fragment.releasePlayer();
+    }
 }

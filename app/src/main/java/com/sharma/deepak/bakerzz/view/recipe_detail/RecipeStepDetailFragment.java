@@ -3,10 +3,10 @@ package com.sharma.deepak.bakerzz.view.recipe_detail;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.exoplayer2.C;
@@ -64,7 +64,6 @@ public class RecipeStepDetailFragment extends Fragment {
     private boolean shouldAutoPlay;
     private BandwidthMeter bandwidthMeter;
 
-    private ImageView ivHideControllerButton;
     private boolean playWhenReady;
     private int currentWindow;
     private long playbackPosition;
@@ -151,10 +150,11 @@ public class RecipeStepDetailFragment extends Fragment {
      * @date 12 august 2018
      * @description method to release the player
      */
-    private void releasePlayer() {
+    public void releasePlayer() {
         if (player != null) {
-            updateStartPosition();
-            shouldAutoPlay = player.getPlayWhenReady();
+            player.setPlayWhenReady(false);
+            player.stop();
+            player.seekTo(0);
             player.release();
             player = null;
             trackSelector = null;
@@ -182,6 +182,7 @@ public class RecipeStepDetailFragment extends Fragment {
         super.onPause();
         if (Util.SDK_INT <= 23) {
             releasePlayer();
+            Log.e("stopped", "stopped in pause");
         }
     }
 
@@ -190,6 +191,7 @@ public class RecipeStepDetailFragment extends Fragment {
         super.onStop();
         if (Util.SDK_INT > 23) {
             releasePlayer();
+            Log.e("stopped", "stopped in stop");
         }
     }
 

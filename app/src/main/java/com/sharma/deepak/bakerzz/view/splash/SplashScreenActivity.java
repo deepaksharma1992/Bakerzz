@@ -9,6 +9,7 @@ import com.sharma.deepak.bakerzz.R;
 import com.sharma.deepak.bakerzz.bean.RecipeListResponse;
 import com.sharma.deepak.bakerzz.presenter.splash.SplashPresenter;
 import com.sharma.deepak.bakerzz.presenter.splash.SplashPresenterInteractor;
+import com.sharma.deepak.bakerzz.testing.EspressoIdlingResource;
 import com.sharma.deepak.bakerzz.util.MessageUtil;
 import com.sharma.deepak.bakerzz.view.home.MainActivity;
 
@@ -21,6 +22,7 @@ import java.util.List;
 public class SplashScreenActivity extends AppCompatActivity implements SplashScreenActivityInteractor {
 
     public static final String SPLASH_LIST_EXTRA = "SPLASH_LIST_EXTRA";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +46,7 @@ public class SplashScreenActivity extends AppCompatActivity implements SplashScr
      */
     private void callRecipeWebService() {
         SplashPresenterInteractor presenterInteractor = new SplashPresenter(this, this);
+        EspressoIdlingResource.increment();
         presenterInteractor.callRecipeWebService();
     }
 
@@ -56,6 +59,7 @@ public class SplashScreenActivity extends AppCompatActivity implements SplashScr
      */
     @Override
     public void getRecipeList(List<RecipeListResponse> recipeList) {
+        EspressoIdlingResource.decrement();
         Intent recipeIntent = new Intent(this, MainActivity.class);
         recipeIntent.putParcelableArrayListExtra(SPLASH_LIST_EXTRA
                 , (ArrayList<? extends Parcelable>) recipeList);

@@ -34,11 +34,10 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-idling-resource:3.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.2'
 
-/*
-    // https://mvnrepository.com/artifact/com.android.support.test.espresso/espresso-contrib
-    compile group: 'com.android.support.test.espresso', name: 'espresso-contrib', version: '2.1'
 
-*/
+    implementation 'com.android.support.test.espresso:espresso-idling-resource:3.0.2'
+    androidTestImplementation "com.android.support.test.espresso.idling:idling-concurrent:3.0.2"
+
 
     // Exo player
     implementation 'com.google.android.exoplayer:exoplayer:2.7.2'
